@@ -11,3 +11,4 @@ discovery.ec2.ping_timeout: "30s"
  
 discovery.zen.ping.multicast.enabled: false
 
+action.disable_delete_all_indices: true
