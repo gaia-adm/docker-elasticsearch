@@ -4,12 +4,10 @@ bootstrap.mlockall: true
 
 cloud.aws.access_key: "${AWS_ACCESS_KEY_ID}"
 cloud.aws.secret_key: "${AWS_SECRET_ACCESS_KEY}"
-cloud.aws.region: "ap-southeast-1" 
+cloud.aws.region: "${AWS_REGION}"
 
 discovery.type: "ec2"
-discovery.ec2.groups: "elasticsearch_sg_dev"
 discovery.ec2.ping_timeout: "30s"
-discovery.ec2.availability_zones: "ap-southeast-1a,ap-southeast-1b"
  
 discovery.zen.ping.multicast.enabled: false
 
