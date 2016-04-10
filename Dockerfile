@@ -6,8 +6,7 @@ MAINTAINER Boris Belozovsky <boriska70@gmail.com>
 #ENV http_proxy $PROXY
 #ENV https_proxy $PROXY
 
-COPY elasticsearch.yml.big /etc/elasticsearch/elasticsearch.yml
-COPY elasticsearch.yml.small /usr/share/elasticsearch/config/elasticsearch.yml
+COPY elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
 
 RUN /usr/share/elasticsearch/bin/plugin install cloud-aws
 
