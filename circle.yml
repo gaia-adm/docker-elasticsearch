@@ -8,6 +8,10 @@ machine:
     - docker
 
 dependencies:
+  pre:
+    - sudo apt-get update && sudo apt-get install jq openssl curl
+    # download update_service script
+    - curl -LO https://raw.githubusercontent.com/gaia-adm/gaia-fleet/master/update_service.sh && chmod +x update_service.sh
   override:
     - docker build -t gaiaadm/elasticsearch .
     - docker tag gaiaadm/elasticsearch gaiaadm/elasticsearch-etcd:$CIRCLE_BUILD_NUM
