@@ -1,5 +1,7 @@
 network.host: 0.0.0.0
 
-bootstrap.mlockall: true
+bootstrap.memory_lock: true
 
-action.disable_delete_all_indices: true
+action.destructive_requires_name: true
+
+xpack.security.enabled: false

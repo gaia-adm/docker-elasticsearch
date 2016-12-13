@@ -1,17 +1,10 @@
-FROM elasticsearch:2.1.0
+FROM elasticsearch:5.0.2
 
 MAINTAINER Boris Belozovsky <boriska70@gmail.com>
 
-ARG PROXY_IP
-ARG PROXY_PORT
-ENV PROXY_IP $PROXY_IP
-ENV PROXY_PORT $PROXY_PORT
+RUN /bin/echo https_proxy=$https_proxy > ~/.wgetrc
 
 COPY elasticsearch-vagrant.yml /usr/share/elasticsearch/config/elasticsearch.yml
 
-#RUN /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head 
-#RUN /usr/share/elasticsearch/bin/plugin install lmenezes/elasticsearch-kopf/2.0 
-#RUN /usr/share/elasticsearch/bin/plugin install royrusso/elasticsearch-HQ/v2.0.3 
-RUN /usr/share/elasticsearch/bin/plugin install mobz/elasticsearch-head -DproxyHost=$PROXY_IP -DproxyPort=$PROXY_PORT
-RUN /usr/share/elasticsearch/bin/plugin install lmenezes/elasticsearch-kopf/2.0 -DproxyHost=$PROXY_IP -DproxyPort=$PROXY_PORT
-RUN /usr/share/elasticsearch/bin/plugin install royrusso/elasticsearch-HQ/v2.0.3 -DproxyHost=$PROXY_IP -DproxyPort=$PROXY_PORT
+RUN /usr/bin/wget https://artifacts.elastic.co/downloads/packs/x-pack/x-pack-5.0.2.zip -O /tmp/x-pack-5.0.2.zip
+RUN /usr/share/elasticsearch/bin/elasticsearch-plugin install --batch file:///tmp/x-pack-5.0.2.zip
