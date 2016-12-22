@@ -28,4 +28,3 @@ CHANGES while upgrading from 2.3:
   - bin/elasticsearch-plugin install --batch file:///tmp/repository-s3-5.0.2.zip
 - docker build --build-arg https_proxy=http://fdsdssdf -t gaiaadm/elasticsearch
 - docker run with ```--ulimit memlock=-1:-1``` and some other memory settings added to the service-file (see https://www.freedesktop.org/software/systemd/man/systemd.exec.html for mor details)
-- memory settings are static: -e ES_JAVA_OPTS="-Xms1600m -Xmx1600m" . Must be made dynamic
