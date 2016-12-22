@@ -1,17 +1,20 @@
 #network.host: 0.0.0.0
 network.host: _ec2_
 
-bootstrap.mlockall: true
+bootstrap.memory_lock: true
 
 cloud.aws.access_key: "${AWS_ACCESS_KEY_ID}"
 cloud.aws.secret_key: "${AWS_SECRET_ACCESS_KEY}"
 cloud.aws.region: "${AWS_REGION}"
 
+cloud.node.auto_attributes: true
+cluster.routing.allocation.awareness.attributes: aws_availability_zone
+
 discovery.type: "ec2"
-discovery.ec2.ping_timeout: "30s"
 discovery.ec2.groups: [ "elasticsearch_sg_dev", "elasticsearch_sg_prod" ]
- 
-discovery.zen.ping.multicast.enabled: false
+
 discovery.zen.minimum_master_nodes: 2
 
-action.disable_delete_all_indices: true
+action.destructive_requires_name: true
+
+xpack.security.enabled: false
